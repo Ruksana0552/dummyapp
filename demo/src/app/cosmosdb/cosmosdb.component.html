@@ -1,0 +1,89 @@
+<p>cosmosdb works!</p><table class="table mt-3">
+    <nav class="navbar navbar-light bg-primary">
+        <div class="container-fluid">
+            <h1 style="color:blue">Angular CRUD</h1>
+        </div>
+    
+    <div class="d-flex">
+        <button type="button" id="addbtn" (Click)="AddUser()" data-bs-toggle="modal" data-bs-target="#exampleModal"class="btn btn-success">Add Employee</button>
+        <button type="button" id="delbutton" (click)="Logout1()">logout</button>
+    </div>
+    
+    
+    
+    </nav>
+    <table class="table mt-3">
+    <thead>
+        <tr>
+            <th scope="col">Employee id</th>
+            <th scope="col">first name</th>
+            <th scope="col">Last name</th>
+            <th scope="col">Email id</th>
+           
+            
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of user">
+            <td>{{row.id}}</td>
+            <td>{{row.FirstName}}</td>
+            <td>{{row.LastName}}</td>
+            <td>{{row.email}}</td>
+           
+            
+            
+          <td>
+                <button style="color: aliceblue;" type="button"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn-btn-info" (click)="AddUser1()">Edit</button>
+                <button  (click)="deleteEmployee(row)" class="btn btn-danger mx-3">delete</button>
+               
+            </td>
+            
+
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Employee details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form  [formGroup]="formvalue1">
+                
+                <div class="mb-6">
+                    <label for="exampleInputEmail1" class="form-label">id</label>
+                    <input type="text" formControlName="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-6">
+                  <label for="exampleInputEmail1" class="form-label">Firtsname</label>
+                  <input type="text" formControlName="firstname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  
+                </div>
+              
+             
+                <div class="mb-6">
+                  <label for="exampleInputPassword1" class="form-label">Last name</label>
+                  <input type="text" formControlName="lastname" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-6">
+                  <label for="exampleInputPassword1" class="form-label">Email</label>
+                  <input type="text" formControlName="email" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-6">
+                  <label for="exampleInputPassword1" class="form-label">Upload file</label>
+                  <input type="file" fromContolName="file" (change)="handlefileinput($event)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+               
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button"  id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
+            <button type="button"  (click)= "AddUser1()" class="btn btn-primary">Add</button>
+         
+      </div>
+    </div>
+    
